@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>定义 组件模板</title>
+		<script src="js/vue.js"></script>
+		<script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+		<style type="text/css">
+			#demo16{
+				width:200px;
+				margin:20px auto;
+				border:1px solid #0000EE;
+				height:400px;
+			}
+			h1{
+				width:100px;
+				height:30px;
+				line-height: 30px;
+				margin:10px;
+				border:2px solid #003333;
+			}
+			button{
+				width:100px;
+				height:30px;
+				line-height:30px;
+				color:#fff;
+				background:greenyellow;
+				margin:10px;
+				border:none;
+				font-size:18px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id='demo16'>
+			<counter heads='likes' color='green'></counter>
+			<counter heads='disliks' color='red'></counter>
+		</div>
+		
+		<template style="text/x-template" id="counter-template">
+			<div>
+				<h1>{{heads}}</h1>
+				<button @click="count +=1" style="background-color:{{color}}">{{count}}</button>
+			</div>
+		   
+		</template>
+		
+		
+		
+	</body>
+</html>
+<script>
+	Vue.component('counter',{
+		template:'#counter-template',
+		props:['heads','color'],
+		data:function(){
+			return {count:0}
+		}
+	});
+	/*Vue.component('my-counter',{
+		template:`
+		 <div>
+		 <h1>{{heads}}</h1>
+		   <button @click="count +=1" style="background-color:{{color}}">{{count}}</button>
+		</div>
+		`,
+		props:['heads','color'],
+		data:function(){
+			return {count:0}
+		}
+	})*/
+	new Vue({
+		el:'#demo16'
+	})
+</script>

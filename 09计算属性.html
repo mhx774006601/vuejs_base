@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>计算属性</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="demo9">{{fullName}}</div>
+		<div id='de9'>{{fullN}}</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#demo9',
+		data:{
+			firstName:'123',
+			lastName:'456'
+		},
+		computed:{
+			/*firstName:function(val){
+				this.fullName = val+''+this.lastName
+			},
+			lastName:function(){
+				this.fullName = this.firstName +''+val
+			}*/
+			fullName:function(){
+				return this.firstName +''+ this.lastName;
+			}
+		}
+	})
+	
+	var vm9 = new Vue({
+		el:'#de9',
+		data:{
+			firstName:'abc',
+			lastName:'def'
+		},
+		computed:{
+			fullN:{
+				get:function(){
+					return this.firstName +''+ this.lastName
+				},
+				set:function(newValue){
+					var names = newValue.split('')
+					this.firstName = names[0]
+					this.lastName = names[names.length - 1]
+				}
+			}
+		}
+	})
+</script>

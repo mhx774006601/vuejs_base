@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="demo19">
+			Level {{level}}
+		</div>
+	</body>
+</html>
+<script>
+	new Vue({
+		el:'#demo19',
+		data:{
+			points:200,
+			//level:'普通会员'
+		},
+		computed:{
+			level:function(){
+				if(this.points<=100){
+					return '普通会员'
+				}
+				
+				return 'VIP会员'
+			}
+		}
+	})
+</script>

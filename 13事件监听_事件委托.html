@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>监听事件 </title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="listen">
+			<button v-on:click='counter += 1'>增加1</button>
+			<p>这个按钮被点击了{{counter}}次</p>
+		</div>
+		
+		<div id='listen2'>
+			<button v-on:click='greet'>Greet</button>
+		</div>
+		
+		<div id='listen3'>
+			
+		</div>
+	</body>
+</html>
+<script>
+	new Vue({
+		el:'#listen',
+		data:{
+			counter:0
+		}
+	})
+	new Vue({
+		el:'#listen2',
+		data:{
+			name:'vuejs'
+		},
+		methods:{
+			greet:function(){
+				alert('hello'+ this.name)
+				alert(event.target.tagName)
+			}
+		}
+	})
+</script>

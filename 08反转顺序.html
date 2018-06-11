@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>反转顺序</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="demo8">
+			<p>message:{{message}}</p>
+			<p>reverseMess:{{reverseMess}}</p>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#demo8',
+		data:{
+			message:'Hello!'
+		},
+		computed:{
+			reverseMess:function(){
+				return this.message.split('').reverse().join('');
+			}
+		}
+		
+	})
+</script>

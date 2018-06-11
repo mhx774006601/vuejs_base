@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表单控件</title>
+		<script type="text/javascript" src="js/vue.js"></script>
+		
+	</head>
+	<body>
+		<!-- 单选列表 -->
+	    <div id="exam6">
+			<select v-model="sel" >
+				<option>A</option>
+				<option>B</option>
+				<option>C</option>
+			</select>
+			<span>selected:{{sel}}</span>
+		</div>
+		
+		<!--<div id="example" >
+		<select v-model="select" multiple>
+		  <option>A</option>
+		  <option>B</option>
+		  <option>C</option>
+		</select>
+		<span>Selected: {{ select }}</span>
+		</div>-->
+		
+		<div id="exam7">
+			<select v-model="selected">
+				<option v-for='option in options' v-bind:value="option.value"> {{option.text}}</option>
+			</select>
+			<span>select:{{selected}}</span>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+/*new Vue({
+  el: '#example',
+  data: {
+     select: []
+  }
+})*/
+new Vue({
+	el:'#exam6',
+	data:{
+		sel:null
+	}
+})
+new Vue({
+	el:'#exam7',
+	data:{
+		selected:'A',
+		options:[
+		  {text:'one',value:'A'},
+		  {text:'two',value:'B'},
+		  {text:'three',value:'C'}
+		]
+	}
+})
+</script>

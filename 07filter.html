@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>取数</title>
+		<script type="text/javascript" src="js/vue.js"></script>
+	</head>
+	<body>
+		<ul id="app7">
+			<li v-for='n in eventNumbers'>{{n}}</li>
+		</ul>
+	</body>
+</html>
+<script type="text/javascript">
+	var vm=new Vue({
+		el:'#app7',
+		data:{
+			numbers:[1,2,3,4,5]
+		},
+		computed:{
+			eventNumbers:function(){
+				return this.numbers.filter(function(number){
+					return number % 2===0
+				})
+			}
+		}
+	})
+</script>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-for使用</title>
+		<script src="js/vue.js"></script>
+	<style type="text/css">
+			body {
+			  font-family: Menlo, Consolas, monospace;
+			  color: #444;
+			}
+			
+		</style>
+		
+	</head>
+	<body>
+	 <div id="app7">
+	 	<ol>
+	 		<todo-item v-for='todo in todos' v-bind:todo='todo'></todo-item>
+	 	</ol>
+	 </div>
+	</body>
+</html>
+<script>
+	Vue.component('todo-item',{
+		props:['todo'],
+		template:'<li>{{todo.text}}</li>'
+		
+	})
+	new Vue({
+		el:'#app7',
+		data:{
+			todos:[
+				{text:'1234'},
+				{text:'wer'},
+				{text:'234'}
+			]
+		}
+	})
+	
+</script>

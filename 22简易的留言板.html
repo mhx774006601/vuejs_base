@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>简易的留言板</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="demo">
+			<input type="text" v-model="val" />
+			<input type="button" value="发送" @click="sendHandle()" />
+			{{val}}
+			<ul>
+				<li v-for='item in lists'>{{item.title}}</li>
+			</ul>
+		</div>
+	</body>
+</html>
+<script>
+	var list = [
+	   {
+	   	id:123,
+	   	title:'不开心'
+	   }
+	]
+	let vm = new Vue({
+		el:'#demo',
+		data:{
+			lists:list,
+			val:''
+		},
+		methods:{
+			sendHandle(){
+				console.log(this.val);
+				this.lists.push({
+					id:Date.now(),
+					title:this.val
+				})
+				this.val = '';
+			}
+		}
+	})
+</script>

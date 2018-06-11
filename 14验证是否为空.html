@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>为空验证+数据绑定</title>
+		<script src="js/vue.js"></script>
+		<style type="text/css">
+			.error{
+				color:red;
+				line-height: 30px;
+			}
+			textarea{
+				width:500px;
+				height:300px;
+			}
+			.btn{
+				width:100px;
+				border-radius: 100px;
+				heigh:30px;
+				line-height: 30px;
+				border:1px solid #ddd;
+				background: #fff;
+				cursor:pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="demo14">
+			<div class="error" v-show='!message'>输入不能为空</div>
+			<div class="error" v-if='!message'>输入不能为空if</div>
+			<textarea v-model="message"></textarea>
+			<button class="btn" v-show='message'>send mess</button>
+			<pre>{{$data | json}}</pre>
+		</div>
+	</body>
+</html>
+<script>
+	new Vue({
+		el:'#demo14',
+		data:{
+			message:'1234'
+		}
+	})
+</script>

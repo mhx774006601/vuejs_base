@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-for 样式切换</title>
+	    <script src="js/vue.js"></script>
+	    <style type="text/css">
+	    	.completed{
+	    		text-decoration: line-through;
+	    	}
+	    </style>
+	</head>
+	<body>
+		<div id="demo20">
+			<ul>
+				<!--<li :class="task.completed ? 'completed':'' " v-for='task in tasks'>{{task.body}}</li>-->
+				<!--<li :class="'completed'" v-for='task in tasks'>{{task.body}}</li>-->
+				<!--<li :class="['completed','truely',something?'something':'']" v-for='task in tasks'>{{task.body}}</li>-->
+				<!--<li :class="{'completed':task.completed}" v-for='task in tasks'>{{task.body}}</li>-->
+				<li @click='toggleTask(task)' :class="{'completed':task.completed}" v-for='task in tasks'>{{task.body}}</li>
+				
+			</ul>
+		</div>
+	</body>
+</html>
+<script>
+	new Vue({
+		el:'#demo20',
+		data:{
+			/*completed:'somthine',
+			something:true,*/
+			tasks:[
+				{body:'12345',completed:false},
+				{body:'67890',completed:true},
+				{body:'qwerty',completed:false}
+			]
+		},
+		methods:{
+			toggleTask:function(task){
+				task.completed = !task.completed;
+			}
+		}
+	})
+</script>

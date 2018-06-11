@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-for 样式切换带删除功能</title>
+	    <script src="js/vue.js"></script>
+	    <style type="text/css">
+	    	.completed{
+	    		text-decoration: line-through;
+	    	}
+	    </style>
+	</head>
+	<body>
+		<div id="demo20">
+			<task-app :list='tasks'>
+				
+			</task-app>
+		</div>
+		<template id="task-template">
+			<div>
+				<h1>my task 
+				<span v-show="remaining">({{remaining}})</span>
+				</h1>
+				<ul>
+					<li 
+						@click="task.completed = !task.completed"
+						:class="{'completed':task.completed}"
+						v-for="task in list">
+						{{task.body}}
+						<strong @click='deleteTask(task)'>X</strong>
+					</li>
+				</ul>
+			</div>
+			
+		</template>
+	</body>
+</html>
+<script>
+	Vue.component('task-app',{
+		template:'#task-template',
+		props:['list'],
+		methods:{
+			toggleTasks:function(task){
+				task.completed = !task.completed;
+			},
+			deleteTask:function(task){
+				//this.list.$remove(task);
+				this.list.splice(task,1);
+				
+			}
+		},
+		computed:{
+			remaining:function(){
+				return this.list.filter(function(task){
+					return ! task.completed;
+				}).length;
+			}
+		}
+	});
+	new Vue({
+		el:'#demo20',
+		data:{
+			tasks:[
+			  {body:'123456',completed:false},
+			  {body:'qwerty',completed:true},
+			  {body:'67890-',completed:false}
+			]
+		}
+	})
+</script>

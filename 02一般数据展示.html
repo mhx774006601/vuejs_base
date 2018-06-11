@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>一般数据展示</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<ul id="example-1">
+			<li v-for="item in items">
+				{{item.message}}
+			</li>
+		</ul>
+		<ul id="example-2">
+			<li v-for="(item,index) in items">
+				{{ParentMessage}} - {{index}} - {{item.message}}
+			</li>
+		</ul>
+		<ul id="v-for-object" class="demo">
+			<li v-for='(key,value) in object'>
+				{{key}}-{{value}}
+			</li>
+		</ul>
+	</body>
+</html>
+<script>
+	var example = new Vue({
+		el:'#example-1',
+		data:{
+			items:[
+			  {message:'Foo'},
+			  {message:'Bar'}
+			]
+		}
+	});
+	var example2 = new Vue({
+		el:"#example-2",
+		data:{
+			ParentMessage:'Parent',
+			items:[
+			   {message:'Foo'},
+			   {message:'Bar'}
+			]
+		}
+	})
+	var demo = new Vue({
+		el:"#v-for-object",
+		data:{
+			object:{
+			   firstName:'John',
+			   lastName:'Doe',
+			   age:30
+			}
+		}
+	})
+</script>
