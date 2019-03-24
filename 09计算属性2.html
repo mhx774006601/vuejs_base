@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>计算属性</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="demo9">
+			<p>计算属性--fun: {{fun}}</p>
+			<p>计算属性--now: {{now}}</p>
+			<p>计算属性－－comp:{{comp}}</p>
+			<p>方法--now2: {{this.now2()}}</p>
+		</div>
+		
+		
+	</body>
+</html>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#demo9',
+		data:{
+			firstName:'123',
+			lastName:'456',
+			
+		},
+		computed:{
+			fun: function (){
+				return this.firstName + this.lastName;
+			},
+			now(){
+				return new Date().toDateString();
+			},
+			comp:{
+				get(){
+					return this.firstName + this.lastName;
+				},
+				set(newValue){
+                  let names = newValue.split('');
+				  this.firstName = names[0],
+				  this.lastName = names[names.length - 1];
+				}
+			}
+		},
+		methods: {
+			now2(){
+				return new Date().toLocaleString();
+			}
+		}
+	})
+	
+	vm.fullName = 'john doe'
+	
+</script>

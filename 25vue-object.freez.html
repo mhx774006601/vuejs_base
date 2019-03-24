@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<title>object.freez阻止属性改变</title>
+<script src="js/vue.js"></script>
+</head>
+<body>
+  <div id = 'app'>
+     
+      <h2>{{msg.name}}</h2>
+      <button v-on:click="msg.name = 'table'">改变</button>
+  </div>
+</body>
+</html>
+<script>
+    let obj = {
+        name:'box'
+    }
+    Object.freeze(obj);  //阻止了obj改变
+  let vm = new Vue({
+      el:'#app',
+      data:{
+          msg:obj
+      }
+  })
+</script>

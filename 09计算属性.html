@@ -8,6 +8,7 @@
 	<body>
 		<div id="demo9">{{fullName}}</div>
 		<div id='de9'>{{fullN}}</div>
+		
 	</body>
 </html>
 <script type="text/javascript">
@@ -34,7 +35,7 @@
 		el:'#de9',
 		data:{
 			firstName:'abc',
-			lastName:'def'
+			lastName:'def',
 		},
 		computed:{
 			fullN:{
@@ -47,6 +48,7 @@
 					this.lastName = names[names.length - 1]
 				}
 			}
-		}
+		},
+		
 	})
 </script>

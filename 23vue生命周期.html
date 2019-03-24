@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue生命周期</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id='app'>
+        
+        <h2>{{message}}</h2>
+        
+        <button @click = 'destroyed'>destroyed</button>
+
+    </div>
+    
+</body>
+</html>
+<script>
+   let vm = new Vue({
+       el:'#app',
+      
+       data:{
+           message:'I am a vue666'
+       },
+       beforeCreate(){
+           console.group('------ beforeCreate -----');
+           console.log('%c%s','color:red','el:'+this.$el);
+           console.log(this.$el);
+           console.log('%c%s','color:red','data:'+this.$data);
+           console.log('%c%s','color:red','message:'+this.message);
+       },
+       created(){
+           console.group('------ created -----');
+           console.log('%c%s','color:red','el:'+this.$el);
+           console.log(this.$el);
+           console.log('%c%s','color:red','data:'+this.$data);
+           console.log('%c%s','color:red','message:'+this.message);
+       },
+       beforeMount(){
+           console.group('------ beforeMount -----');
+           console.log('%c%s','color:red','el:'+this.$el);
+           console.log(this.$el);
+           console.log('%c%s','color:red','data:'+this.$data);
+           console.log('%c%s','color:red','message:'+this.message);
+       },
+       mounted(){
+           console.group('------ mounted -----');
+           console.log('%c%s','color:red','el:'+this.$el);
+           console.log(this.$el);
+           console.log('%c%s','color:red','data:'+this.$data);
+           console.log('%c%s','color:red','message:'+this.message);
+       },
+       beforeUpdate(){
+           console.group('------ beforeUpdate -----');
+           console.log('%c%s','color:red','el:'+this.$el);
+           console.log(this.$el);
+           console.log('%c%s','color:red','data:'+this.$data);
+           console.log('%c%s','color:red','message:'+this.message);
+       },
+       updated(){
+           console.group('------ updated -----');
+           console.log('%c%s','color:red','el:'+this.$el);
+           console.log(this.$el);
+           console.log('%c%s','color:red','data:'+this.$data);
+           console.log('%c%s','color:red','message:'+this.message);
+       },
+       beforeDestroy(){
+           console.group('------ beforeDestroy -----');
+           console.log('%c%s','color:red','el:'+this.$el);
+           console.log(this.$el);
+           console.log('%c%s','color:red','data:'+this.$data);
+           console.log('%c%s','color:red','message:'+this.message);
+       },
+       destroyed(){
+           
+           console.group('------ destroyed -----');
+           console.log('%c%s','color:red','el:'+this.$el);
+           console.log(this.$el);
+           console.log('%c%s','color:red','data:'+this.$data);
+           console.log('%c%s','color:red','message:'+this.message);
+       },
+       methods:{
+           destroyed(d){
+               console.log(d)
+               this.message = '改变我吧';
+               this.$destroy();
+           }
+       }
+   })
+   vm.message = '我更新了哟'
+</script>

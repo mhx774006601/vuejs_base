@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<title>组件复用</title>
+<script src="js/vue.js"></script>
+</head>
+<body>
+
+   <div id = 'app'>
+       <button-counter></button-counter>
+       <button-counter></button-counter>
+       <button-counter></button-counter>
+   </div>
+</body>
+</html>
+<script>
+    //data必须是一个函数，例如下面例子，这样每个实例才能单独维护被返回对象的单独的拷贝。
+    //如果data是一个对象，那么多个组件共享它时，就会产生数据污染，互相影响　。
+    Vue.component('button-counter',{
+        data(){
+            return{
+                count:0
+            }
+        },
+
+        template:"<button v-on:click='count++'>click me {{count}} times.</button>"
+    })
+   let vm = new Vue({
+       el:'#app',
+      
+   })
+</script>
