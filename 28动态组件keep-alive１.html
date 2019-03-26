@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue中的动态组件 keep-alive　的使用</title>
+	</head>
+	<body>
+		<!-- 
+			1.prop 
+			  include:字符串或正则表达式。只有匹配的组件会被缓存
+			  exclude:字符串或正则表达式。任何匹配的组件都不会被缓存。
+			  exclude优先级大于include.	
+		-->
+		<keep-alive include = 'test-keep-alive'>
+			<!--
+            	作者：772131022@qq.com
+            	时间：2019-03-26
+            	描述：将缓存name为test-keep-alive的组件
+            -->
+			<component></component>
+		</keep-alive>
+		
+		<keep-alive include='a,b'>
+			<!--
+            	作者：772131022@qq.com
+            	时间：2019-03-26
+            	描述：将缓存name为a或者b的组件，结合动态组件使用
+            -->
+            <component :is= 'view'></component>
+		</keep-alive>
+		
+		<!--
+        	作者：772131022@qq.com
+        	时间：2019-03-26
+        	描述：动态判断
+        -->
+        <keep-alive :include='includedComponents'>
+        	<router-view></router-view>
+        </keep-alive
+        
+        <keep-alive exclude='test-keep-alive'>
+        	<!-- 将不缓存name为test-keep-alive的组件 -->
+        	<component></component>
+        </keep-alive>
+	</body>
+</html>
+<script>
+	export default {
+		name:'test-keep-alive',
+		data () {
+			return {
+				includeComponents: 'test-keep-alive'
+			}
+		}
+	}
+</script>

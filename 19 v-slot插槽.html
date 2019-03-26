@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-slot插槽</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="demo19">
+			Level {{level}}
+			<p>
+				<!--　描述：插槽内容　-->
+				<child-component>
+	<!--描述：  如果下边定义的组中不加插槽<slot></slot>的话，写在此处的“你好呀”就不会渲染到页面中  -->
+					你好呀  
+		<!-- 具名插槽 -->
+                    <template slot='girl'>
+                    	漂亮，美丽，狂风骤雨
+                    </template> 
+                    <template slot='boy'>
+                    	帅气，勇敢
+                    </template>
+                    <div>
+                    	我是默认的插槽
+                    </div>
+				</child-component>
+		
+			</p>
+		</div>
+	</body>
+</html>
+<script>
+	Vue.component('child-component',{
+		template:`
+		 	<div>
+		 	  　<div>
+		 	      Hello,World!
+		 	  	  <slot></slot> 
+		 	  	</div>
+		 	  	<div>
+		 	  	  <h4>这个世界不仅有男人和女人</h4>
+		 	  	  <slot name='girl'></slot>
+		 	  	  <br />
+		 	  	  <slot name='boy'></slot>
+		 	  	  	 	  	 
+		 	  	</div>
+		 	</div>
+		 `
+	})
+	new Vue({
+		el:'#demo19',
+		data:{
+			points:200,
+			//level:'普通会员'
+		},
+		computed:{
+			level:function(){
+				if(this.points<=100){
+					return '普通会员'
+				}
+				
+				return 'VIP会员'
+			}
+		}
+	})
+	
+	
+</script>

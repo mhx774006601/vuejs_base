@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue中的动态组件 keep-alive　的使用2</title>
+		<script src="./js/vue.js"></script>
+		<script src="./js/vue-router.js"></script>
+		<script src="./js/28keep-alive.js"></script>
+	</head>
+	<body>     
+        <!-- 
+        	2.结合router,缓存部分页面　
+        	使用$router.meta的keepAlive属性	
+        -->
+        <keep-alive>
+        	<router-view v-if='$route.meta.keepAlive'></router-view>
+        </keep-alive>
+        <router-view v-if='!$route.meta.keepAlive'></router-view>
+	</body>
+</html>
+<script>
+	export default {
+		name:'test-keep-alive',
+		data () {
+			return {
+				includeComponents: 'test-keep-alive'
+			}
+		}
+	}
+</script>

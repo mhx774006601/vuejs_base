@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-slot插槽--作用域插槽2</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="demo19">
+			<!--　描述：作用域插槽　-->
+			<child :lists='nameList'>
+				<template slot-scope='a'>
+					 {{a}} 
+					<div v-if='a.bbb.id==1'>你好：<span>{{a.bbb.name}}</span></div>
+					<div v-else>{{a.bbb.name}}</div>
+				</template>
+			</child>
+		</div>
+	</body>
+</html>
+<script>
+	Vue.component('child',{
+		props:['lists'],
+		template:`
+		 	<div>
+		 		<ul>
+		 			<li v-for="list in lists">
+		 				<slot :bbb='list'></slot>
+		 			</li>
+		 		</ul>
+		 	</div>
+		 `
+	})
+	new Vue({
+		el:'#demo19',
+		data:{
+			nameList:[
+				{id:1,name:'孙悟空'},
+				{id:2,name:'猪八戒'},
+				{id:3,name:'沙和尚'},
+				{id:4,name:'唐僧'},
+				{id:5,name:'小白龙'}
+			]
+		},
+		
+	})
+	
+	
+</script>
